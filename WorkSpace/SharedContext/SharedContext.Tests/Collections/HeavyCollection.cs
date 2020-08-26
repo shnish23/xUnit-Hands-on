@@ -3,7 +3,10 @@ using Xunit;
 
 namespace SharedContext.Tests.Collections
 {
-    public class HeavyCollection
+    [CollectionDefinition("Heavy collection")]
+    public class HeavyCollection : ICollectionFixture<HeavyFixture>
     {
+        // CollectionDefinitionを付与したクラスのみ作成すればよい
+        // 特別な実装は不要
     }
 }
