@@ -17,5 +17,18 @@ namespace AsyncAwait.Tests
 
             File.WriteAllText(ExistFileName, TextFileContent);
         }
+
+        [Fact]
+        public async Task ReadAllTextAsyncWhenExistFile()
+        {
+            Assert.Equal(TextFileContent, await Files.ReadAllTextAsync(ExistFileName));
+        }
+
+        [Fact]
+        public async Task ReadAllTextAsyncWhenNotExistFile()
+        {
+            await Assert.ThrowsAsync<FileNotFoundException>(
+                () => Files.ReadAllTextAsync(NotExistFileName));
+        }
     }
 }
